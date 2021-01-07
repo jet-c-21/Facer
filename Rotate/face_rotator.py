@@ -3,12 +3,13 @@ author: Jet Chien
 GitHub: https://github.com/jet-chien
 Create Date: 2021/1/7
 """
+from typing import Union
+
 # coding: utf-8
 import cv2
 import dlib
 import numpy as np
 
-from typing import Union
 from Facer.Detect.capturer import capture_face
 from Facer.ult.model_api import ModelAPI
 

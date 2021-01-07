@@ -5,6 +5,7 @@ Create Date: 2021/1/8
 """
 # coding: utf-8
 from typing import Union
+
 import numpy as np
 
 from Facer.Crop.cropper import crop_face

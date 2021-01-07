@@ -4,11 +4,11 @@ GitHub: https://github.com/jet-chien
 Create Date: 2021/1/8
 """
 # coding: utf-8
-import cv2
 import dlib
 import numpy as np
 
 from Facer.Detect.capturer import capture_face
+
 
 class PureCropper:
     MARGIN = 0.5

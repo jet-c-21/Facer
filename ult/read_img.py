@@ -5,9 +5,10 @@ Create Date: 2021/1/7
 """
 # coding: utf-8
 import os
+from typing import Union
+
 import cv2
 import numpy as np
-from typing import Union
 
 
 def get_img_arr(input_obj: Union[str, np.ndarray]) -> Union[np.ndarray, None]:

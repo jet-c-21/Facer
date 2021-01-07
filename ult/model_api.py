@@ -5,13 +5,10 @@ Create Date: 2021/1/7
 """
 # coding: utf-8
 import ntpath
-import os
 import pathlib
 
 import cv2
 import dlib
-from joblib import load
-from sklearn.pipeline import Pipeline
 
 
 class ModelAPI:
