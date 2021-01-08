@@ -7,7 +7,7 @@ Create Date: 2021/1/8
 import dlib
 import numpy as np
 
-from Facer.Crop.pure_cropper import PureCropper
+from .pure_cropper import PureCropper
 
 
 def crop_face(img: np.ndarray, face_block: dlib.rectangle, margin=None):

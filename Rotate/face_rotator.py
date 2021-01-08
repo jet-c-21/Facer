@@ -10,8 +10,8 @@ import cv2
 import dlib
 import numpy as np
 
-from Facer.Detect.capturer import capture_face
-from Facer.ult.model_api import ModelAPI
+from ..Detect.capturer import capture_face
+from ..ult.model_api import ModelAPI
 
 
 class FaceRotator:

@@ -7,7 +7,7 @@ Create Date: 2021/1/8
 import dlib
 import numpy as np
 
-from Facer.Detect.capturer import capture_face
+from ..Detect.capturer import capture_face
 
 
 class PureCropper:

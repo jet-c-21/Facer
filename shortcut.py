@@ -8,10 +8,10 @@ from typing import Union
 
 import numpy as np
 
-from Facer.Crop.cropper import crop_face
-from Facer.Detect.capturer import capture_face
-from Facer.Rotate.rotator import get_rotated_face
-from Facer.ult.read_img import get_img_arr
+from .Crop.cropper import crop_face
+from .Detect.capturer import capture_face
+from .Rotate.rotator import get_rotated_face
+from .ult.read_img import get_img_arr
 
 
 def get_face_grid_from_portrait(img: Union[str, np.ndarray], margin=None) -> Union[np.ndarray, None]:

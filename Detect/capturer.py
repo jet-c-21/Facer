@@ -9,8 +9,8 @@ from typing import Union
 import dlib
 import numpy as np
 
-from Facer.Detect.cls.captured_face import CapturedFace
-from Facer.ult.read_img import get_img_arr
+from .cls.captured_face import CapturedFace
+from ..ult.read_img import get_img_arr
 
 dlib_detector = dlib.get_frontal_face_detector()
 
