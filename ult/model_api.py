@@ -9,6 +9,7 @@ import pathlib
 
 import cv2
 import dlib
+from dlib import shape_predictor
 
 
 class ModelAPI:
@@ -33,7 +34,7 @@ class ModelAPI:
         return ModelAPI._path_convert(s, path_type)
 
     @staticmethod
-    def _dlib_lmk68_helper() -> dlib.shape_predictor:
+    def _dlib_lmk68_helper() -> shape_predictor:
         p = ModelAPI._dlib_lmk68_router('linux')
         return dlib.shape_predictor(p)
 
@@ -44,7 +45,7 @@ class ModelAPI:
         return ModelAPI._path_convert(s, path_type)
 
     @staticmethod
-    def _openface_embed_helper() -> dlib.shape_predictor:
+    def _openface_embed_helper() -> shape_predictor:
         p = ModelAPI._openface_embed_router('linux')
         return cv2.dnn.readNetFromTorch(p)
 

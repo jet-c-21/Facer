@@ -4,16 +4,17 @@ GitHub: https://github.com/jet-chien
 Create Date: 2021/1/7
 """
 # coding: utf-8
-import dlib
+from dlib import rectangle
 
 
 class CapturedFace:
-    def __init__(self, has_face=None, face_count=None, face_ls=None, detector_type=None, exc=None):
+    def __init__(self, has_face=None, face_count=None, face_ls=None, img=None, detector_type=None, exc=None):
         """
 
         :param has_face: bool
         :param face_count: int
         :param face_ls: list, [face_block (dlib.rectangle), ...]
+        :param img: ndarray
         :param detector_type: str
         :param exc: str
         """
@@ -32,6 +33,11 @@ class CapturedFace:
         else:
             self.face_list = face_ls
 
+        if img is None:
+            self.img = None
+        else:
+            self.img = img
+
         if detector_type is None:
             self.detector_type = 'unknown'
         else:
@@ -46,6 +52,7 @@ class CapturedFace:
         if self.has_face:
             text = f"Has Face: {self.has_face}\n" \
                    f"Face Count: {self.face_count}\n" \
+                   f"Image: H={self.img.shape[0]}, W={self.img.shape[1]}, C={self.img.shape[2]}\n" \
                    f"Detector Type: {self.detector_type}\n" \
                    f"Face List:\n"
 
@@ -69,5 +76,5 @@ class CapturedFace:
                    f"Exception: {self.exc}"
             return text.strip()
 
-    def __getitem__(self, item) -> dlib.rectangle:
+    def __getitem__(self, item) -> rectangle:
         return self.face_list[item]

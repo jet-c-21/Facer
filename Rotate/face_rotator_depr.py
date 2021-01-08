@@ -7,12 +7,11 @@ from typing import Union
 
 # coding: utf-8
 import cv2
-from numpy import ndarray
+import dlib
 import numpy as np
-from dlib import rectangle
 
-from ..Detect.face_capturer import FaceCapturer
-from ..Detect.lmk_scanner import LMKScanner
+from ..Detect.capturer import capture_face
+from ..ult.model_api import ModelAPI
 
 
 class FaceRotator:
@@ -54,7 +53,15 @@ class FaceRotator:
         return FaceRotator.extract_eye_center(land_marks, FaceRotator.RIGHT_EYE_LMK_POS)
 
     @staticmethod
-    def get_rotated_img(image: ndarray, angle: float, center=None, scale=1.0) -> ndarray:
+    def get_landmarks(img: np.ndarray, face_block: dlib.rectangle) -> Union[dlib.full_object_detection, None]:
+        lmk_detector = ModelAPI.get('dlib-lmk68')
+        try:
+            return lmk_detector(img, face_block)
+        except Exception as e:
+            print(f"failed to detect landmarks from face.  Error: {e}")
+
+    @staticmethod
+    def get_rotated_img(image: np.ndarray, angle: float, center=None, scale=1.0) -> np.ndarray:
         h, w = image.shape[:2]
         if center is None:
             center = (w / 2, h / 2)
@@ -66,24 +73,30 @@ class FaceRotator:
         return rotated
 
     @staticmethod
-    def get_rotated_face(img: Union[str, ndarray], face_capturer: FaceCapturer,
-                         lmk_scanner: LMKScanner) -> Union[ndarray, None]:
-        capt_face = face_capturer.capture(img)
+    def get_rotated_face(img: Union[str, np.ndarray]) -> Union[np.ndarray, None]:
+        """
 
+        :param img: str | np.ndarray
+        :return:
+        """
+        capt_face = capture_face(img)
         if capt_face.face_count != 1:
             msg = f"The count of faces in the image is not 1"
             print(msg)
             return
 
-        img = capt_face.img
         face_block = capt_face[0]
-        return FaceRotator.get_rotated_face_with_fb(img, face_block, lmk_scanner)
+        return FaceRotator.get_rotated_face_with_fb(img, face_block)
 
     @staticmethod
-    def get_rotated_face_with_fb(img: ndarray, face_block: rectangle,
-                                 lmk_scanner: LMKScanner) -> Union[ndarray, None]:
+    def get_rotated_face_with_fb(img: np.ndarray, face_block: dlib.rectangle) -> Union[np.ndarray, None]:
+        """
 
-        landmarks = lmk_scanner.scan(img, face_block)
+        :param img: np.ndarray
+        :param face_block: dlib.rectangle
+        :return:
+        """
+        landmarks = FaceRotator.get_landmarks(img, face_block)
         if landmarks is None:
             msg = f"Failed to get landmarks from image"
             print(msg)
