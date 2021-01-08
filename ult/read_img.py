@@ -22,3 +22,4 @@ def get_img_arr(input_obj: Union[str, np.ndarray]) -> Union[np.ndarray, None]:
             except Exception as e:
                 msg = f"Failed to read image from path : {input_obj}. Error: {e}"
                 print(msg)
+

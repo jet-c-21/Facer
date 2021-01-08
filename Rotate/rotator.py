@@ -6,12 +6,13 @@ Create Date: 2021/1/7
 # coding: utf-8
 from typing import Union
 
-import numpy as np
+from numpy import ndarray
 
 from .face_rotator import FaceRotator
-from ..ult.read_img import get_img_arr
+from ..Detect.face_capturer import FaceCapturer
+from ..Detect.lmk_scanner import LMKScanner
 
 
-def get_rotated_face(img: Union[str, np.ndarray]) -> Union[np.ndarray, None]:
-    img = get_img_arr(img)
-    return FaceRotator.get_rotated_face(img)
+def get_rotated_face(img: Union[str, ndarray], face_capturer: FaceCapturer,
+                         lmk_scanner: LMKScanner) -> Union[ndarray, None]:
+    return FaceRotator.get_rotated_face(img, face_capturer, lmk_scanner)
