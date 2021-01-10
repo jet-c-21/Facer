@@ -1,3 +1,10 @@
-opencv-contrib-python
-dlib
+# progress bar
+tqdm
+
+# image processing
 imutils
+opencv-contrib-python
+
+# face processing
+dlib
+face-recognition

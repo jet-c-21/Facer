@@ -33,7 +33,8 @@ class AGFaceRecog:
     @staticmethod
     def data_to_fe_pkl(img_dir_path: str, save_path: str):
         result = list()
-        for img_path in tqdm(list_images(img_dir_path)):
+        image_ls = list(list_images(img_dir_path))
+        for img_path in tqdm(image_ls):
             face_encode = AGFaceRecog.get_face_encode(img_path)
             if face_encode is not None:
                 result.append(face_encode)

@@ -13,6 +13,7 @@ from .Detect.lmk_scanner import LMKScanner
 from .Recognize.adam_geitgey import AGFaceRecog
 
 # utilities function module
+from . import ult
 from .ult import data_store
 from .ult import read_img
 from .ult import model_api
