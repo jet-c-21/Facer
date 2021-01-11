@@ -44,17 +44,18 @@ class AGFaceRecog:
         save_as_pkl(result, save_path)
 
     @staticmethod
-    def compare_faces(member_encodings: list, test_encoding: ndarray, tolerance=0.4):
+    def compare_faces(member_encodings: list, test_encoding: ndarray, tolerance=0.4) -> [bool]:
         return face_recognition.compare_faces(member_encodings, test_encoding, tolerance)
 
     @staticmethod
-    def get_similarity(binary_ls: list):
+    def get_similarity(binary_ls: list) -> Union[float, ndarray]:
         return numpy.mean(binary_ls)
 
     @staticmethod
-    def verify_member(member_encodings: list, test_encoding: ndarray, tolerance=0.4, threshold=0.6):
+    def verify_member(member_encodings: list, test_encoding: ndarray, tolerance=0.4, threshold=0.6) -> (bool, float):
         res = AGFaceRecog.compare_faces(member_encodings, test_encoding, tolerance)
         similarity = AGFaceRecog.get_similarity(res)
+        print(similarity)
         if similarity >= threshold:
             result = True
         else:
