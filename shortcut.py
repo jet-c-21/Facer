@@ -28,6 +28,9 @@ def get_lmk_scanner() -> LMKScanner:
     lmk_scanner.load_detector()
     return lmk_scanner
 
+def get_ag_face_recog() -> AGFaceRecog:
+    return AGFaceRecog()
+
 
 def get_face_grid_from_portrait(img: Union[str, np.ndarray], face_capturer: FaceCapturer,
                                 lmk_scanner: LMKScanner, margin=0.2) -> Union[np.ndarray, None]:
