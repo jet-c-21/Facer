@@ -53,12 +53,14 @@ class AGFaceRecog:
 
     @staticmethod
     def verify_member(member_encodings: list, test_encoding: ndarray, tolerance=0.4, threshold=0.6) -> (bool, float):
-        res = AGFaceRecog.compare_faces(member_encodings, test_encoding, tolerance)
-        similarity = AGFaceRecog.get_similarity(res)
-        print(similarity)
-        if similarity >= threshold:
-            result = True
-        else:
-            result = False
+        compare_result = AGFaceRecog.compare_faces(member_encodings, test_encoding, tolerance)
+        similarity = AGFaceRecog.get_similarity(compare_result)
+        msg = f"Similarity: {similarity}"
+        # print(msg)
 
-        return result, similarity
+        if similarity >= threshold:
+            is_matched = True
+        else:
+            is_matched = False
+
+        return is_matched, similarity
