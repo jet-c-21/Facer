@@ -62,13 +62,13 @@ class PureCropper:
 
         return img[new_lt_y:new_lt_y + new_h, new_lt_x:new_lt_x + new_w]
 
-    @staticmethod
-    def get_smart_cropped_face(img: np.ndarray, face_block: dlib.rectangle):
-        for i in range(10, -1, -1):
-            margin = i / 10
-            cropped = PureCropper.get_cropped_face(img, face_block, margin)
-            h, w, _ = cropped.shape
-            if h > 0 and w > 0:
-                capt_faces = capture_face(cropped)
-                if capt_faces.face_count == 1:
-                    return cropped
+    # @staticmethod
+    # def get_smart_cropped_face(img: np.ndarray, face_block: dlib.rectangle):
+    #     for i in range(10, -1, -1):
+    #         margin = i / 10
+    #         cropped = PureCropper.get_cropped_face(img, face_block, margin)
+    #         h, w, _ = cropped.shape
+    #         if h > 0 and w > 0:
+    #             capt_faces = capture_face(cropped)
+    #             if capt_faces.face_count == 1:
+    #                 return cropped
