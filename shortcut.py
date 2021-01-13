@@ -53,5 +53,5 @@ def get_face_grid_from_portrait(img: Union[str, np.ndarray], face_capturer: Face
     return cropped_face
 
 
-def get_face_grid(img: Union[str, np.ndarray], ag_face_recog: AGFaceRecog) -> Union[ndarray, None]:
+def get_face_encoding(img: Union[str, np.ndarray], ag_face_recog: AGFaceRecog) -> Union[ndarray, None]:
     return ag_face_recog.get_face_encode(img)
