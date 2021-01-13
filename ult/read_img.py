@@ -9,6 +9,16 @@ from typing import Union
 
 import cv2
 import numpy as np
+from imutils.paths import list_images
+
+
+def get_img_ls(root_dir_path: str) -> list:
+    if not os.path.exists(root_dir_path):
+        msg = f"[WARN] - Input directory is not existed! Path: {root_dir_path}"
+        print(msg)
+        return list()
+
+    return list(list_images(root_dir_path))
 
 
 def get_img_arr(input_obj: Union[str, np.ndarray]) -> Union[np.ndarray, None]:
@@ -22,4 +32,3 @@ def get_img_arr(input_obj: Union[str, np.ndarray]) -> Union[np.ndarray, None]:
             except Exception as e:
                 msg = f"Failed to read image from path : {input_obj}. Error: {e}"
                 print(msg)
-
