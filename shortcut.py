@@ -7,12 +7,14 @@ Create Date: 2021/1/8
 from typing import Union
 
 import numpy as np
+from numpy import ndarray
 
 from .Crop.cropper import crop_face
 from .Detect.capturer import capture_face
 from .Detect.face_capturer import FaceCapturer
 from .Detect.lmk_scanner import LMKScanner
 from .Rotate.rotator import get_rotated_face
+from .Recognize.adam_geitgey import AGFaceRecog
 
 
 def get_face_capturer() -> FaceCapturer:
@@ -49,3 +51,7 @@ def get_face_grid_from_portrait(img: Union[str, np.ndarray], face_capturer: Face
     cropped_face = crop_face(rotated_face, face_block, margin)
 
     return cropped_face
+
+
+def get_face_grid(img: Union[str, np.ndarray], ag_face_recog: AGFaceRecog) -> Union[ndarray, None]:
+    return ag_face_recog.get_face_encode(img)

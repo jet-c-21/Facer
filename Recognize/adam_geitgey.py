@@ -21,7 +21,7 @@ class AGFaceRecog:
     def get_face_encode(img: Union[str, ndarray]) -> Union[ndarray, None]:
         """
         :param img: str |  ndarray
-        :return: ndarray(128)
+        :return: ndarray (128)
         """
         img = get_img_arr(img)
         try:
