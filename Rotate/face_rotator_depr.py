@@ -81,7 +81,7 @@ class FaceRotator:
         """
         capt_face = capture_face(img)
         if capt_face.face_count != 1:
-            msg = f"The count of faces in the image is not 1"
+            msg = f"The count of faces in the image is not equal to 1"
             print(msg)
             return
 
