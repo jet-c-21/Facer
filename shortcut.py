@@ -15,6 +15,18 @@ from .Detect.lmk_scanner import LMKScanner
 from .Rotate.rotator import get_rotated_face
 
 
+def get_face_capturer() -> FaceCapturer:
+    face_capturer = FaceCapturer()
+    face_capturer.load_detector()
+    return face_capturer
+
+
+def get_lmk_scanner() -> LMKScanner:
+    lmk_scanner = LMKScanner()
+    lmk_scanner.load_detector()
+    return lmk_scanner
+
+
 def get_face_grid_from_portrait(img: Union[str, np.ndarray], face_capturer: FaceCapturer,
                                 lmk_scanner: LMKScanner, margin=0.2) -> Union[np.ndarray, None]:
     # rotate image
