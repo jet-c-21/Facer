@@ -71,7 +71,7 @@ class FaceRotator:
         capt_face = face_capturer.capture(img)
 
         if capt_face.face_count != 1:
-            msg = f"The count of faces in the raw image is not equal to 1"
+            msg = f"[FACER] - The count of faces in the raw image is not equal to 1"
             # print(msg)
             return
 
@@ -85,7 +85,7 @@ class FaceRotator:
 
         landmarks = lmk_scanner.scan(img, face_block)
         if landmarks is None:
-            msg = f"Failed to get landmarks from image"
+            msg = f"[FACER] - Failed to get landmarks from image"
             print(msg)
             return
 

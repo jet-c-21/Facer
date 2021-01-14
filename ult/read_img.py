@@ -14,7 +14,7 @@ from imutils.paths import list_images
 
 def get_img_ls(root_dir_path: str) -> list:
     if not os.path.exists(root_dir_path):
-        msg = f"[WARN] - Input directory is not existed! Path: {root_dir_path}"
+        msg = f"[FACER][WARN] - Input directory is not existed! Path: {root_dir_path}"
         print(msg)
         return list()
 
@@ -30,5 +30,5 @@ def get_img_arr(input_obj: Union[str, np.ndarray]) -> Union[np.ndarray, None]:
             try:
                 return cv2.imread(input_obj)
             except Exception as e:
-                msg = f"Failed to read image from path : {input_obj}. Error: {e}"
+                msg = f"[FACER] - Failed to read image from path : {input_obj}. Error: {e}"
                 print(msg)

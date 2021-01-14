@@ -27,7 +27,7 @@ class AGFaceRecog:
         try:
             return face_recognition.face_encodings(img)[0]
         except Exception as e:
-            msg = f"Failed to get face encodings. Error: {e}"
+            msg = f"[FACER] - Failed to get face encodings. Error: {e}"
             print(msg)
 
     @staticmethod
@@ -39,7 +39,7 @@ class AGFaceRecog:
             if face_encode is not None:
                 result.append(face_encode)
 
-        msg = f"Data Length : {len(result)}"
+        msg = f"[FACER] - Data Length : {len(result)}"
         print(msg)
         save_as_pkl(result, save_path)
 
@@ -55,7 +55,7 @@ class AGFaceRecog:
     def verify_member(member_encodings: list, test_encoding: ndarray, tolerance=0.4, threshold=0.6) -> (bool, float):
         compare_result = AGFaceRecog.compare_faces(member_encodings, test_encoding, tolerance)
         similarity = AGFaceRecog.get_similarity(compare_result)
-        msg = f"Similarity: {similarity}"
+        msg = f"[FACER] - Similarity: {similarity}"
         # print(msg)
 
         if similarity >= threshold:

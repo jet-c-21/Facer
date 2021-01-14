@@ -23,7 +23,7 @@ class FaceCapturer:
         try:
             detect_result = self.detector(img, 1)
         except Exception as e:
-            msg = f"Failed to detect faces via dlib.get_frontal_face_detector(). Error: {e}"
+            msg = f"[FACER] - Failed to detect faces via dlib.get_frontal_face_detector(). Error: {e}"
             print(msg)
             return CapturedFace(exc=e)
 

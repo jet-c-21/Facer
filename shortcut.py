@@ -45,7 +45,7 @@ def get_face_grid_from_portrait(img: Union[str, np.ndarray], face_capturer: Face
 
     # print(ed - st)
     if capt_face.face_count != 1:
-        msg = 'Failed to get face grid from image, the face count of the rotated image != 1'
+        msg = '[FACER] - Failed to get face grid from image, the face count of the rotated image is not equal to 1'
         print(msg)
         return
     face_block = capt_face[0]
